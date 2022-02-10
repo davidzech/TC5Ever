@@ -79,11 +79,9 @@ void Main() {
 		if ((pos = arg.find(addrarg)) != std::string::npos) {
 			std::string value = arg.substr(pos + addrarg.length());
 			address = value;
-			break;
 		}
 		if ((pos = arg.find(playerarg)) != std::string::npos) {
 			std::string value = arg.substr(pos + playerarg.length());
-
 		}
 	}
 
