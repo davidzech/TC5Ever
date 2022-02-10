@@ -7,7 +7,7 @@
 #include <iostream>
 
 using namespace std::string_literals;
-extern "C" __declspec(dllexport) HRESULT WINAPI DirectInput8Create(HINSTANCE handle, DWORD version, REFIID r_iid, LPVOID * out_wrapper, LPUNKNOWN p_unk);
+extern "C" __declspec(dllexport) HRESULT WINAPI DirectInput8Create(HINSTANCE handle, DWORD version, REFIID r_iid, LPVOID* out_wrapper, LPUNKNOWN p_unk);
 
 using DirectInput8CreateFunc = decltype(&DirectInput8Create);
 
@@ -34,12 +34,9 @@ bool restoreDirectInput8Create() {
 void Main();
 
 bool APIENTRY DllMain(HMODULE hModule,
-	DWORD  ul_reason_for_call,
-	LPVOID lpReserved
-)
-{
-	switch (ul_reason_for_call)
-	{
+	DWORD ul_reason_for_call,
+	LPVOID lpReserved) {
+	switch (ul_reason_for_call) {
 	case DLL_PROCESS_ATTACH: {
 		DisableThreadLibraryCalls(hModule);
 		if (!restoreDirectInput8Create()) {
@@ -56,7 +53,7 @@ bool APIENTRY DllMain(HMODULE hModule,
 };
 
 void CreateDebugConsole() {
-	FILE* conin, * conout;
+	FILE *conin, *conout;
 	AllocConsole();
 	freopen_s(&conin, "conin$", "r", stdin);
 	freopen_s(&conout, "conout$", "w", stdout);
@@ -97,9 +94,8 @@ void Main() {
 			sockaddr_in* in = reinterpret_cast<sockaddr_in*>(const_cast<sockaddr*>(n));
 			in->sin_addr = addr;
 			return orig(s, n, y);
-			});
+		});
 	}
 
 	hooks::Attach();
 }
-
