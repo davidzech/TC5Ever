@@ -1,4 +1,5 @@
-# TC5Ever
+# TC5Ever 
+[![MSBuild](https://github.com/davidzech/TC5Ever/actions/workflows/msbuild.yml/badge.svg)](https://github.com/davidzech/TC5Ever/actions/workflows/msbuild.yml)
 
 Simple mod to enable 2 Player CO-OP link play with Time Crisis 5. It works by simply intercepting TCP `connect(2)` calls and replacing the destination address with whatever you choose as player 2. 
 
