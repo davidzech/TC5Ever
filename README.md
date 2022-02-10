@@ -11,7 +11,7 @@ I have tested multiplayer with:
 
 Unzip `dinput8.dll` to the same directory where `TimeCrisisGame-Win64-Shipping.exe` exists. With a typical installation that would resolve to `<Your Folder Name>/TC5/Binaries/Win64`
 
-As of right now, it is technically only needed for player to have this dll installed, but I will likely add additional fixes for the game into the dll that will benefit both players.
+As of right now, it is technically only needed for player 2 to have this dll installed, but I will likely add additional fixes for the game into the dll that will benefit both players.
 
 ---
 
