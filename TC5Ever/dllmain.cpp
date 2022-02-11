@@ -65,12 +65,16 @@ void Main() {
 
 	std::vector<std::string> args = settings::Args();
 
-	std::string address = "127.0.0.1"s;
-	std::string playerside = "1"s;
 
-	for (std::string& arg : args) {
+	std::string address = "127.0.0.1"s;
+	std::string playside = "1"s;
+
+	std::cout << "Args: " << std::endl;
+	for (std::string arg : args) {
+		std::cout << arg << std::endl;
+
 		static const std::string addrarg = "-address="s;
-		static const std::string playerarg = "-playerside="s;
+		static const std::string playerarg = "-playside="s;
 
 		size_t pos;
 		if ((pos = arg.find(addrarg)) != std::string::npos) {
@@ -79,14 +83,15 @@ void Main() {
 		}
 		if ((pos = arg.find(playerarg)) != std::string::npos) {
 			std::string value = arg.substr(pos + playerarg.length());
+			playside = value;
 		}
 	}
 
 	std::cout << "address: " << address << std::endl;
-	std::cout << "playerside: " << playerside << std::endl;
+	std::cout << "playside: " << playside << std::endl;
 
 
-	if (playerside == "2") {
+	if (playside.find("2") != std::string::npos) {
 		in_addr addr;
 		inet_pton(AF_INET, address.c_str(), &addr);
 

@@ -5,6 +5,7 @@
 #include <memory>
 #include <span>
 #include <iterator>
+#include <iostream>
 
 namespace settings {
 	std::vector<std::string> Args() {
@@ -17,7 +18,7 @@ namespace settings {
 		std::transform(s.begin(), s.end(), std::back_inserter(args), [](auto wstr) -> std::string {
 			auto wstrLen = wcslen(wstr);
 			auto nChars = WideCharToMultiByte(CP_UTF8, 0, wstr, int(wstrLen), nullptr, 0, nullptr, nullptr);
-			std::unique_ptr<char[]> buf = std::make_unique<char[]>(nChars);
+			std::unique_ptr<char[]> buf = std::make_unique<char[]>(nChars + 1);
 			WideCharToMultiByte(CP_UTF8, 0, wstr, int(wstrLen), buf.get(), nChars, 0, 0);
 			return buf.get();
 		});
